@@ -6,10 +6,10 @@
     "npm": "8.19.2"
   },
   "scripts": {
-    "build": "react-app-rewired build",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-app-rewired build",
     "eject": "react-scripts eject",
     "lint": "eslint --ext js,jsx src config-overrides.js",
-    "start": "react-app-rewired start",
+    "start": "DISABLE_ESLINT_PLUGIN=true REACT_APP_SERVER_BASE_URL=http://kanban.17.biying88.cn react-app-rewired start",
     "test": "react-app-rewired test"
   },
   "browserslist": {
@@ -23,6 +23,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "all"
   },
   "eslintConfig": {
     "env": {
@@ -40,10 +45,13 @@
     },
     "extends": [
       "airbnb",
-      "airbnb/hooks"
+      "airbnb/hooks",
+      "plugin:prettier/recommended"
     ],
     "rules": {
       "no-unused-vars": "warn",
+      "no-undef": "off",
+      "prettier/prettier": "error",
       "import/no-extraneous-dependencies": [
         "error",
         {
@@ -112,6 +120,9 @@
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "react-test-renderer": "^18.2.0"
+    "react-test-renderer": "^18.2.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1"
   }
 }
